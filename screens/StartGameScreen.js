@@ -4,7 +4,7 @@ import PrimaryButton from "../components/PrimaryButton";
 function StartGameScreen() {
     return( 
         <View style={styles.inputContainer}>
-            <TextInput />
+            <TextInput style={styles.numberInput} maxLength={2} />
             <PrimaryButton>Reset</PrimaryButton>
             <PrimaryButton>Confirm</PrimaryButton>
         </View>
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 
         //  Android-only:
         elevation: 4,
-        
+
         //  iOS-only:
         shadowColor: 'black',
         shadowOffset: { width: 0, height: 2 },
@@ -31,5 +31,19 @@ const styles = StyleSheet.create({
         //  Probably don't want this all the way at 1, shadow is 
         //  much stronger on iOS by default than Android
         shadowOpacity: 0.25,
+    },
+    numberInput: {
+        height: 50,
+        width: 50,
+        fontSize: 32,
+        borderBottomColor: '#ddb52f',
+        borderBottomWidth: 2,
+        color: '#ddb52f',
+        marginVertical: 8,
+        //  Hmm, this both bolds and underlines the text on my 
+        //  Android emulator, but on his it just bolds it....
+        //  Oh, it only underlines if u type a letter not a number... why?
+        fontWeight: 'bold',
+        textAlign: 'center',
     }
 });
