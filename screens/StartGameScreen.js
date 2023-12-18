@@ -3,7 +3,7 @@ import { TextInput, View, StyleSheet, Alert } from "react-native";
 import PrimaryButton from "../components/PrimaryButton";
 import { useState } from 'react';
 
-function StartGameScreen() {
+function StartGameScreen({onPickNumber}) {
     //  Impt! TextInput will always have string data even if "number-pad"!
     const [enteredNumber, setEnteredNumber] = useState('');
 
@@ -29,7 +29,7 @@ function StartGameScreen() {
             return;
         }
 
-        console.log('Valid number!');
+        onPickNumber(chosenNumber);
     }
 
     return( 
