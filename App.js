@@ -1,4 +1,10 @@
-import { ImageBackground, StyleSheet } from 'react-native';
+//  SafeAreaView is like 100vh on websites that might be viewed on phones!
+//  Doesn't include the parts of the screen that your stuff can't
+//  go over top of, like the camera and the fake buttons that are
+//  at the bottom of the screen!
+//  Wait, actually a little different maybe? Want the background image and stuff
+//  to not be inside of it?
+import { ImageBackground, StyleSheet, SafeAreaView } from 'react-native';
 import StartGameScreen from './screens/StartGameScreen';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useState } from 'react';
@@ -26,7 +32,9 @@ export default function App() {
         style={styles.rootScreen}
         imageStyle={styles.backgroundImage}
       >
-        {screen}
+        <SafeAreaView style={styles.rootScreen}>
+          {screen}
+        </SafeAreaView>
       </ImageBackground>
     </LinearGradient>
   );
