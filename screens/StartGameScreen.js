@@ -1,13 +1,30 @@
 import { TextInput, View, StyleSheet } from "react-native";
 import PrimaryButton from "../components/PrimaryButton";
+import { useState } from 'react';
 
 function StartGameScreen() {
+    //  Impt! TextInput will always have string data even if "number-pad"!
+    const [enteredNumber, setEnteredNumber] = useState('');
+
+    //  ReactNative adds the enteredText here:
+    function numberInputHandler(enteredText) {
+        setEnteredNumber(enteredText)
+    }
+
+    function confirmInputHandler() {
+
+    }
+
     return( 
         <View style={styles.inputContainer}>
             <TextInput 
                 style={styles.numberInput} 
                 maxLength={2} 
                 keyboardType="number-pad" 
+                //  Lets u clear the TextInput n stuff
+                value={enteredNumber}
+                //  ReactNative ands the enteredText here:
+                onChangeText={numberInputHandler}
 
                 //  These are more for letters, idk why he's doing it here:
                 autoCapitalize="none"
@@ -18,7 +35,7 @@ function StartGameScreen() {
                     <PrimaryButton>Reset</PrimaryButton>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <PrimaryButton>Confirm</PrimaryButton>
+                    <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
                 </View>
             </View>
         </View>
