@@ -3,6 +3,9 @@ import { TextInput, View, StyleSheet, Alert } from "react-native";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import { useState } from 'react';
 import Colors from "../constants/colors";
+import Title from "../components/ui/Title";
+import Card from "../components/ui/Card";
+import InstructionText from "../components/ui/InstructionText";
 
 function StartGameScreen({onPickNumber}) {
     //  Impt! TextInput will always have string data even if "number-pad"!
@@ -34,28 +37,32 @@ function StartGameScreen({onPickNumber}) {
     }
 
     return( 
-        <View style={styles.inputContainer}>
-            <TextInput 
-                style={styles.numberInput} 
-                maxLength={2} 
-                keyboardType="number-pad" 
-                //  Lets u clear the TextInput n stuff
-                value={enteredNumber}
-                //  ReactNative ands the enteredText here:
-                onChangeText={numberInputHandler}
+        <View style={styles.rootContainer}>
+            <Title>Guess My Number</Title>
+            <Card>
+            <InstructionText>Enter a Number</InstructionText>
+                <TextInput 
+                    style={styles.numberInput} 
+                    maxLength={2} 
+                    keyboardType="number-pad" 
+                    //  Lets u clear the TextInput n stuff
+                    value={enteredNumber}
+                    //  ReactNative ands the enteredText here:
+                    onChangeText={numberInputHandler}
 
-                //  These are more for letters, idk why he's doing it here:
-                autoCapitalize="none"
-                autoCorrect={false}
-            />
-            <View style={styles.buttonsContainer}>
-                <View style={styles.buttonContainer}>
-                    <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
+                    //  These are more for letters, idk why he's doing it here:
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                />
+                <View style={styles.buttonsContainer}>
+                    <View style={styles.buttonContainer}>
+                        <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
+                    </View>
+                    <View style={styles.buttonContainer}>
+                        <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
+                    </View>
                 </View>
-                <View style={styles.buttonContainer}>
-                    <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
-                </View>
-            </View>
+            </Card>
         </View>
     )
 }
@@ -63,25 +70,10 @@ function StartGameScreen({onPickNumber}) {
 export default StartGameScreen;
 
 const styles = StyleSheet.create({
-    inputContainer: {
-        justifyContent: 'center',
-        alignItems: 'center',
+    rootContainer: {
+        flex: 1,
         marginTop: 100,
-        marginHorizontal: 24,
-        padding: 16,
-        backgroundColor: Colors.primary800,
-        borderRadius: 8,
-
-        //  Android-only:
-        elevation: 4,
-
-        //  iOS-only:
-        shadowColor: 'black',
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 6,
-        //  Probably don't want this all the way at 1, shadow is 
-        //  much stronger on iOS by default than Android
-        shadowOpacity: 0.25,
+        alignItems: 'center',
     },
     numberInput: {
         height: 50,
