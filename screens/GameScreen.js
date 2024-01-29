@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Card from "../components/ui/Card";
 import InstructionText from "../components/ui/InstructionText";
+//  This import doesn't work automatically the way he said it would:
+//import { Ionicons } from "@expo/vector-icons";
 
 //  exclude prevents the phone from guessing the number right away
 function generateRandomBetween(min, max, exclude) {
@@ -80,11 +82,18 @@ function GameScreen({ userNumber, onGameOver }) {
           <View style={styles.buttonContainer}>
             <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
               -
+              {/* 
+                I'm having trouble getting these to work, giving up on it for now:
+              <Ionicons name="md-remove" size={24} color="white" />
+              */}
             </PrimaryButton>
           </View>
           <View style={styles.buttonContainer}>
             <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>
               +
+              {/*
+              <Ionicons name="md-add" size={24} color="white" />
+              */}
             </PrimaryButton>
           </View>
         </View>
